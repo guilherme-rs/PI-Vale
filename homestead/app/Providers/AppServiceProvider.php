@@ -13,7 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //$mercadorias = ['Celular', 'TV', 'Geladeira', 'Microondas'];
+        //view()->share('mercadorias', $mercadorias);
+        view()->composer('layouts.barra-lateral', function ($view){
+            $mercadorias = ['Celular', 'TV', 'Geladeira', 'Microondas'];
+            $view->with('mercadorias', $mercadorias);
+        });
     }
 
     /**
