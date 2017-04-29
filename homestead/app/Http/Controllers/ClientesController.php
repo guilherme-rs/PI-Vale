@@ -45,4 +45,11 @@ class ClientesController extends Controller{
 
         return 'Salvo!';
     }
+
+    public function destroy($id){
+        $cliente = cliente::find($id);
+        $cliente->delete();
+
+        return 'Cliente excluido.';
+    }
 }

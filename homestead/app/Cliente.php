@@ -11,7 +11,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model{
-    protected $table = 'tr_clientes';
+    //protected $table = 'tr_clientes';
     //Mudando PK da tabela
 //    protected $primaryKey = 'cliente_id';
     //Tirando o autoincremento

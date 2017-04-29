@@ -15,7 +15,7 @@ class VeiculosController extends Controller
      */
     public function index()
     {
-
+        return view('veiculos.index');
     }
 
     /**
@@ -48,7 +48,7 @@ class VeiculosController extends Controller
     public function show($id)
     {
         $veiculo = Veiculo::find($id);
-        return response()->json($veiculo);
+        return view('veiculos.destroy', ['veiculo'=>$veiculo]);
     }
 
     /**
@@ -90,7 +90,10 @@ class VeiculosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $veiculo = Veiculo::find($id);
+        $veiculo->delete();
+
+        return 'Veículo excluido.';
     }
 
     public function json(){

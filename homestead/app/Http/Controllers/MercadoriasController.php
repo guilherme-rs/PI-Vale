@@ -15,9 +15,7 @@ class MercadoriasController extends Controller
      */
     public function index()
     {
-        $mercadorias = ['Celular', 'TV', 'Geladeira', 'Microondas'];
-
-        return view('mercadorias.index', ['mercadorias' => $mercadorias]);
+        return view('mercadorias.index');
     }
 
     /**
