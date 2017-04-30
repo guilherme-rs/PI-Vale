@@ -6,15 +6,13 @@ use App\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
-class VeiculosController extends Controller
-{
+class VeiculosController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         return view('veiculos.index');
     }
 
@@ -23,9 +21,8 @@ class VeiculosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        return view('veiculos.criar');
     }
 
     /**
@@ -34,9 +31,16 @@ class VeiculosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+        $veiculo = new Veiculo();
+        $veiculo->placa = Input::get('placa');
+        $veiculo->marca = Input::get('marca');
+        $veiculo->modelo = Input::get('modelo');
+        $veiculo->cor = Input::get('cor');
+        $veiculo->combustivel = Input::get('combustivel');
+        $veiculo->save();
 
+        return redirect()->route('veiculos.index');
     }
 
     /**
@@ -45,8 +49,7 @@ class VeiculosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $veiculo = Veiculo::find($id);
         return view('veiculos.destroy', ['veiculo'=>$veiculo]);
     }
@@ -57,8 +60,17 @@ class VeiculosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id) {
         $veiculo = Veiculo::find($id);
         $veiculo->placa = Input::get('placa');
         $veiculo->marca = Input::get('marca');
@@ -71,32 +83,19 @@ class VeiculosController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $veiculo = Veiculo::find($id);
         $veiculo->delete();
 
         return 'Veículo excluido.';
     }
 
-    public function json(){
+    public function json() {
         /*
         $mercadorias = [
             [
