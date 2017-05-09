@@ -5,20 +5,20 @@
 
     <form method="post" action="{{ route('mercadorias.store') }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <label for="marca">Marca: </label>
-        <input type="text" name="marca" id="marca">
+        <label for="codbarras">Codigo de Barras: </label>
+        <input type="text" name="codigobarras" id="codbarras">
         <br>
-        <label for="modelo">Modelo: </label>
-        <input type="text" name="modelo" id="modelo">
+        <label for="nf">Nota Fiscal: </label>
+        <input type="text" name="notafiscal" id="nf">
         <br>
-        <label for="cor">Cor: </label>
-        <input type="text" name="cor" id="cor">
+        <label for="destino">Destino: </label>
+        <input type="text" name="destino" id="destino">
         <br>
-        <label for="placa">Placa: </label>
-        <input type="text" name="placa" id="placa">
+		<label for="cliente">Cliente: </label>
+        <input type="text" name="cliente_id" id="cliente">
         <br>
-        <label for="combustivel">Combustivel: </label>
-        <input type="text" name="combustivel" id="combustivel">
+        <label for="veiculo">Veiculo: </label>
+        <input type="text" name="veiculo_id" id="veiculo">
         <br>
         <input type="submit" name="salvar" value="Cadastrar">
     </form>

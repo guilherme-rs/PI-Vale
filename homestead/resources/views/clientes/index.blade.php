@@ -1,9 +1,16 @@
 @extends('layouts.principal')
 @section('titulo', 'Pagina de Clientes')
+@section('estilos')
+    <link href="css/app.css" rel="stylesheet">
+@endsection
 @section('conteudo')
     <h1> Pagina de Clientes </h1>
 
-    <table>
+    <a href="{{route('clientes.create')}}">
+        <span class="glyphicon glyphicon-plus">Add</span>
+    </a>
+
+    <table class="table table-hover">
         <thead>
         <th>ID</th>
         <th>Razão</th>
@@ -16,13 +23,27 @@
         <tbody>
             @forelse ($clientes as $item)
                 <tr>
-                    <td>{{ $loop -> index }}</td>
+                    <td>{{ $item -> id }}</td>
                     <td>{{ $item -> razao}}</td>
                     <td>{{ $item -> nome_fantasia}}</td>
                     <td>{{ $item -> cnpj}}</td>
                     <td>{{ $item -> email}}</td>
                     <td>{{ $item -> ativo}}</td>
                     <td>{{ $item -> obs}}</td>
+					<td class="opcoes">
+						<a href="{{route('clientes.edit', ['id' => $item->id])}}">
+						  <span class="glyphicon glyphicon-pencil"></span>
+						</a>
+                    </td>
+                    <td>
+                        <form method="post" action="{{route('clientes.destroy',['id' => $item->id])}}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </form>
+					</td>
                 </tr>
             @empty
                 <tr>
@@ -31,13 +52,4 @@
             @endforelse
         </tbody>
     </table>
-
-    <form method="post" action="{{ route('clientes.salvar') }}">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="text" name="nome" placeholder="Digite seu nome">
-        <input type="submit" value="Enviar">
-    </form>
-
-    <a href="{{ route('clientes.detalhes', ['id' => '1']) }}"> Detalhes do Cliente </a>
-
 @endsection

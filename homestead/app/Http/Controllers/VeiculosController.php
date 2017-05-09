@@ -13,6 +13,8 @@ class VeiculosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        //$veiculo = Veiculo::all();
+        //return view('veiculos.index', $veiculo);
         return view('veiculos.index');
     }
 
@@ -61,6 +63,15 @@ class VeiculosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+        $veiculo = Veiculo::find($id);
+        return view('veiculos.edit', [
+            'id' => $veiculo->id,
+            'placa' => $veiculo->placa,
+            'marca' => $veiculo->marca,
+            'modelo' => $veiculo->modelo,
+            'cor' => $veiculo->cor,
+            'combustivel' => $veiculo->combustivel
+        ]);
     }
 
     /**
@@ -70,7 +81,7 @@ class VeiculosController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update($id) {
         $veiculo = Veiculo::find($id);
         $veiculo->placa = Input::get('placa');
         $veiculo->marca = Input::get('marca');
@@ -79,7 +90,7 @@ class VeiculosController extends Controller {
         $veiculo->combustivel = Input::get('combustivel');
         $veiculo->save();
 
-        return redirect()->route('veiculos.show', ['veiculo' => $id]);
+        return redirect()->route('veiculos.index');
     }
 
     /**
@@ -92,7 +103,7 @@ class VeiculosController extends Controller {
         $veiculo = Veiculo::find($id);
         $veiculo->delete();
 
-        return 'Veículo excluido.';
+        return redirect()->route('veiculos.index');
     }
 
     public function json() {

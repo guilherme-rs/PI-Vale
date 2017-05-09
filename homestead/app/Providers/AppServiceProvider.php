@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Cliente;
 use App\Mercadoria;
 use App\Veiculo;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,11 +33,12 @@ class AppServiceProvider extends ServiceProvider
             $clientes = Cliente::get();
             $view->with('clientes', $clientes);
         });
-
+		
         view()->composer('veiculos.index', function ($view){
             $veiculos = Veiculo::get();
             $view->with('veiculos', $veiculos);
         });
+
     }
 
     /**

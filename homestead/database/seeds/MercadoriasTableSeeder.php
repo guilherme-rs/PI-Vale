@@ -16,7 +16,7 @@ class MercadoriasTableSeeder extends Seeder
             'notafiscal' => '123456',
             'destino' => 'Rua A, 1 Bairro Tal - ES CEP:12.345-678',
             'cliente_id' => 1,
-            'veiculo_id' => 1
+            'veiculo_id' => 2
         ]);
     }
 }

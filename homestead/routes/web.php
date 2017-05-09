@@ -22,6 +22,7 @@ Route::get('/login', function () {
 Route::get('/usuarios', function () {
     return 'Hello Usuarios.';
 });
+/*
 
 Route::get('/clientes', 'ClientesController@index') ->name('clientes.index');
 
@@ -36,9 +37,11 @@ Route::get('/clientes/{id}/excluir', 'ClientesController@salvar') ->name('client
 Route::get('/clientes/{id}', 'ClientesController@detalhes') ->name('clientes.detalhes');
 
 Route::get('/clientes/{id}/enderecos/{end_id}', 'ClientesController@enderecos') ->name('clientes.enderecos');
-
+*/
 Route::get('/mercadorias/json', 'MercadoriasController@json');
 
 Route::resource('mercadorias', 'MercadoriasController');
+
+Route::resource('clientes', 'ClientesController');
 
 Route::resource('veiculos', 'VeiculosController');

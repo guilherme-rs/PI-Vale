@@ -3,53 +3,116 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
-class ClientesController extends Controller{
-    public function index(){
+class ClientesController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
         return view('clientes.index');
     }
-    public function detalhes($id, $request){
-        $clientes = $request->session()->get('clientes', []);
-        $nome = $clientes[$id];
-        return view('clientes.detalhes', ['nome_cliente' => $nome]);
-    }
-    public function salvar($request){
-        $nome = Input::get('nome');
-        $clientes = $request->session()->get('clientes');
-        if(!clientes){
-            $clientes = array();
-        }
-        array_push($clientes, $nome);
-        $request->session()->put('clientes', $clientes);
-        $clientesAtualizados = $request->session()->get('clientes');
-        $texto = "";
-        foreach ($clientesAtualizados as $id => $clientes){
-            $texto .= "{$clientes}, ";
-        }
-        return "Cliente {$nome} salvo. Clientes cadastrados: {$texto}";
-    }
-    public function enderecos($id, $end_id){
-        return 'Endereço '.$end_id.' do cliente'.$id;
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('clientes.create');
     }
 
-    public function testeAdd(){
-        $clientes = new Cliente();
-        $clientes ->razao = 'Empresa B';
-        $clientes ->razao = 'Nome B';
-        $clientes ->cnpj = '00987654000132';
-        $clientes ->email = 'email.b@dominio.com';
-        $clientes ->obs = 'Outra observação qualquer';
-        $clientes ->save();
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $clliente = new Cliente();
+        $clliente->razao = Input::get('razao');
+        $clliente->nome_fantasia = Input::get('nome_fantasia');
+        $clliente->cnpj = Input::get('cnpj');
+        $clliente->email = Input::get('email');
+        $clliente->ativo = (bool)Input::get('ativo');
+        $clliente->obs = Input::get('obs');
+        $clliente->save();
 
-        return 'Salvo!';
+        return redirect()->route('clientes.index');
     }
 
-    public function destroy($id){
-        $cliente = cliente::find($id);
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $cliente = Cliente::find($id);
+        return view('clientes.destroy', ['cliente' => $cliente]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)    {
+        $cliente = Cliente::find($id);
+        return view('clientes.edit', [
+            'id' => $cliente->id,
+            'razao' => $cliente->razao,
+            'nome_fantasia' => $cliente->nome_fantasia,
+            'cnpj' => $cliente->cnpj,
+            'email' => $cliente->email,
+            'ativo' => $cliente->ativo,
+            'obs' => $cliente->obs
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $clliente = Cliente::find($id);
+        $clliente->razao = Input::get('razao');
+        $clliente->nome_fantasia = Input::get('nome_fantasia');
+        $clliente->cnpj = Input::get('cnpj');
+        $clliente->email = Input::get('email');
+        $clliente->ativo = (bool)Input::get('ativo');
+        $clliente->obs = Input::get('obs');
+        $clliente->save();
+
+        return redirect()->route('clientes.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $cliente = Cliente::find($id);
         $cliente->delete();
 
-        return 'Cliente excluido.';
+        return redirect()->route('clientes.index');
     }
 }

@@ -1,0 +1,247 @@
+/* Estilos do Corpo - início */
+body{
+    margin:0px;
+    font-family: Arial, Tahoma;
+    font-size: 16px;
+    font-weight:200;
+}
+
+#container{
+    max-width:100%;
+    margin:auto;
+}
+
+
+/* Estilos do Menu - início */
+nav{
+    width:100%;
+    padding:0px;
+    margin:auto;
+    margin-bottom:20px;
+    min-height:45px;
+    display:flex;
+    flex-flow: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+nav ul{
+    width:100%;
+    margin:auto;
+}
+
+nav, nav ul {
+    background: #45484d; /* Old browsers */
+    background: -moz-linear-gradient(top, #45484d 0%, #000000 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #45484d 0%,#000000 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #45484d 0%,#000000 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #45484d 0%,#000000 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+    clear:both;
+}
+
+nav ul li{
+    min-width:8%;
+    list-style:none;
+    color:#FFF;
+    float:left;
+    font-size:9pt;
+    height:30px;
+    padding:15px;
+    padding-bottom:0px;
+    text-align:center;
+}
+
+nav ul li:hover{
+    color:#FFF;
+    background-color:#8FBC8F;
+    min-width:8%;
+    list-style:none;
+    font-size:9pt;
+    height:30px;
+    padding:15px;
+    padding-bottom:0px;
+    float:left;
+    text-align:center;
+    cursor:pointer;
+    background: #8FBC8F; /* Old browsers */
+    background: -moz-linear-gradient(top, #45484d 0%, #005591 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#45484d), color-stop(100%,#005591)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #45484d 0%,#005591 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #45484d 0%,#005591 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #45484d 0%,#005591 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #45484d 0%,#005591 100%); /* W3C */
+}
+
+nav ul li a:link, nav ul li a:visited,nav ul li a:hover{
+    text-decoration:none;
+    color:#FFF;
+}
+
+/* Estilos do Menu - Fim */
+
+/* Estilos da área central - início */
+section{
+    position:relative;
+    width:100%;
+    margin:auto;
+    clear:both;
+    margin-bottom:50px;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    min-height:200px;
+    margin-bottom:10px;
+}
+
+h1{
+    width:100%;
+    clear:both;
+    display:block;
+    font-size: 20px;
+    text-align:center;
+    margin:auto;
+    margin-bottom:20px;
+    color:#444;
+}
+
+#cadastrar{
+    padding:5px;
+    background: #45484d; /* Old browsers */
+    background: -moz-linear-gradient(top, #CCC 0%, #FFF 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCC), color-stop(100%,#FFF)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #CCC 0%,#FFF 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #CCC 0%,#FFF 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #CCC 0%,#FFF 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #CCC 0%,#FFF 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#FFF',GradientType=0 ); /* IE6-9 */
+    cursor:pointer;
+    clear:both;
+    border:solid 1px #000;
+}
+
+#cadastrar:hover{
+    background: #45484d; /* Old browsers */
+    background: -moz-linear-gradient(top, #FFF 0%, #CCC 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF), color-stop(100%,#CCC)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #FFF 0%,#CCC 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #FFF 0%,#CCC 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #FFF 0%,#CCC 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #FFF 0%,#CCC 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF', endColorstr='#CCC',GradientType=0 ); /* IE6-9 */
+    cursor:pointer;
+}
+
+section div{
+    width:100%;
+}
+
+section div a:link, section div a:visited, section div a:hover{
+    text-decoration:none;
+    color:#000;
+    width:25%;
+    text-align:center;
+    margin:auto;
+    display: block;
+    display: block;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+/* Estilos da área central - fim */
+
+/* Estilos das Tabelas - início */
+table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width:auto;
+    display:flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin:auto;
+    margin-top:20px
+}
+
+table td, table th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+table tr:nth-child(even)
+
+table tr:hover {
+    background-color: #555;
+    color:#FFF;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    color: #FFF;
+}
+
+.editar, .excluir{
+    color:#FFF;
+    cursor:pointer;
+    text-align:center;
+    font-size: 13px;
+}
+
+
+
+.editar{
+    background-color:#005591;
+}
+
+.editar:hover{
+    background-color:#2F4F4F;
+}
+
+.excluir{
+    background-color:#B22222;
+}
+
+.excluir:hover{
+    background-color:#800000;
+}
+
+.editar a:link, .editar a:visited,.editar a:hover,
+.excluir a:link, .excluir a:visited,.excluir a:hover{
+    text-decoration:none;
+    color:#FFF;
+}
+
+
+.formulario {
+    position:relative;
+    margin:0 auto;
+    max-width:440px;
+    min-width:240px;
+    min-height:340px;
+
+}
+
+fieldset {
+    border:1px solid #FFF;
+    margin-bottom:10px;
+    padding-top:12px;
+    text-align:center;
+
+}
+
+legend {
+    padding: 0.1em 0.5em;
+    border:1px solid #555;
+    color:#000;
+    font-size:90%;
+    text-align:center;
+}
+
+.botao{
+    border:none;
+    text-align:center;
+    margin:0px;
+    margin-top:20px;
+}

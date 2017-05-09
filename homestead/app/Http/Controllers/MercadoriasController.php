@@ -3,18 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Mercadoria;
+use App\Cliente;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
-class MercadoriasController extends Controller
-{
+class MercadoriasController extends Controller{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index()    {
         return view('mercadorias.index');
     }
 
@@ -23,9 +22,8 @@ class MercadoriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create()    {
+		return view('mercadorias.criar');
     }
 
     /**
@@ -34,10 +32,16 @@ class MercadoriasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $algumaId;
-        return redirect()->route('mercadorias.show', ['mercadoria', $algumaId]);
+    public function store(Request $request)    {
+        $mercadoria = new Mercadoria();
+        $mercadoria->codigobarras = Input::get('codigobarras');
+        $mercadoria->notafiscal = Input::get('notafiscal');
+        $mercadoria->destino = Input::get('destino');
+        $mercadoria->cliente_id = Input::get('cliente_id');
+        $mercadoria->veiculo_id = Input::get('veiculo_id');
+        $mercadoria->save();
+
+        return redirect()->route('mercadorias.index');
     }
 
     /**
@@ -46,8 +50,7 @@ class MercadoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id)    {
         $mercadorias = Mercadoria::find($id);
         return view('mercadorias.detalhes', ['mercadoria' => $mercadorias]);
     }
@@ -58,9 +61,16 @@ class MercadoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id)    {
+        $mercadoria = Mercadoria::find($id);
+        return view('mercadorias.edit', [
+            'id' => $mercadoria->id,
+            'codigobarras' => $mercadoria->codigobarras,
+            'notafiscal' => $mercadoria->notafiscal,
+            'destino' => $mercadoria->destino,
+            'cliente_id' => $mercadoria->cliente_id,
+            'veiculo_id' => $mercadoria->veiculo_id
+        ]);
     }
 
     /**
@@ -70,9 +80,16 @@ class MercadoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id)    {
+        $mercadoria = Mercadoria::find($id);
+        $mercadoria->codigobarras = Input::get('codigobarras');
+        $mercadoria->notafiscal = Input::get('notafiscal');
+        $mercadoria->destino = Input::get('destino');
+        $mercadoria->cliente_id = Input::get('cliente_id');
+        $mercadoria->veiculo_id = Input::get('veiculo_id');
+        $mercadoria->save();
+
+        return redirect()->route('mercadorias.index');
     }
 
     /**
@@ -81,19 +98,10 @@ class MercadoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //Exclusao normal
+    public function destroy($id)    {
         $mercadoria = Mercadoria::find($id);
         $mercadoria->delete();
-
-        // Mercadoria::destroy($id);
-        // Mercadoria::destroy([$id_1, $id_2, ...])
-        //Restaurar um SoftDelete
-        //$marcadoria->restore();
-        //$mercadoria::onlyTrashed()->where('veiculo_id', 2)->restore();
-
-        return 'Mercadoria excluida.';
+        return redirect()->route('mercadorias.index');
     }
 
     public function json(){
