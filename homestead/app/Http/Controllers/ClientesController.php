@@ -42,11 +42,11 @@ class ClientesController extends Controller
         $clliente->nome_fantasia = Input::get('nome_fantasia');
         $clliente->cnpj = Input::get('cnpj');
         $clliente->email = Input::get('email');
-        $clliente->ativo = (bool)Input::get('ativo');
+        $clliente->ativo = Input::get('ativo');
         $clliente->obs = Input::get('obs');
         $clliente->save();
-
-        return redirect()->route('clientes.index');
+        return response()->json($clliente);
+        //return redirect()->route('clientes.index');
     }
 
 

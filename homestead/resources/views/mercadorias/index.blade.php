@@ -1,8 +1,5 @@
 @extends('layouts.principal')
 @section('titulo', 'Lista de Mercadorias')
-@section('estilos')
-    <link href="css/app.css" rel="stylesheet">
-@endsection
 @section('conteudo')
 
     <h1>Lista de Mercadorias</h1>
