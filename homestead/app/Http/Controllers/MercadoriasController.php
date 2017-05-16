@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mercadoria;
 use App\Cliente;
+use App\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -23,7 +24,10 @@ class MercadoriasController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function create()    {
-		return view('mercadorias.criar');
+		$veiculos = Veiculo::get();
+		$clientes = Cliente::get();
+
+		return view('mercadorias.criar', ['clientes' => $clientes,'veiculos' => $veiculos]);
     }
 
     /**
@@ -34,11 +38,11 @@ class MercadoriasController extends Controller{
      */
     public function store(Request $request)    {
         $mercadoria = new Mercadoria();
-        $mercadoria->codigobarras = Input::get('codigobarras');
-        $mercadoria->notafiscal = Input::get('notafiscal');
+        $mercadoria->codigobarras = Input::get('codbarras');
+        $mercadoria->notafiscal = Input::get('nf');
         $mercadoria->destino = Input::get('destino');
-        $mercadoria->cliente_id = Input::get('cliente_id');
-        $mercadoria->veiculo_id = Input::get('veiculo_id');
+        $mercadoria->cliente_id = Input::get('cliente');
+        $mercadoria->veiculo_id = Input::get('veiculo');
         $mercadoria->save();
 
         return redirect()->route('mercadorias.index');
@@ -63,13 +67,18 @@ class MercadoriasController extends Controller{
      */
     public function edit($id)    {
         $mercadoria = Mercadoria::find($id);
+		$veiculos = Veiculo::get();
+		$clientes = Cliente::get();
+
         return view('mercadorias.edit', [
             'id' => $mercadoria->id,
             'codigobarras' => $mercadoria->codigobarras,
             'notafiscal' => $mercadoria->notafiscal,
             'destino' => $mercadoria->destino,
             'cliente_id' => $mercadoria->cliente_id,
-            'veiculo_id' => $mercadoria->veiculo_id
+            'veiculo_id' => $mercadoria->veiculo_id,
+			'clientes' => $clientes,
+			'veiculos' => $veiculos
         ]);
     }
 
@@ -82,11 +91,11 @@ class MercadoriasController extends Controller{
      */
     public function update(Request $request, $id)    {
         $mercadoria = Mercadoria::find($id);
-        $mercadoria->codigobarras = Input::get('codigobarras');
-        $mercadoria->notafiscal = Input::get('notafiscal');
+        $mercadoria->codigobarras = Input::get('codbarras');
+        $mercadoria->notafiscal = Input::get('nf');
         $mercadoria->destino = Input::get('destino');
-        $mercadoria->cliente_id = Input::get('cliente_id');
-        $mercadoria->veiculo_id = Input::get('veiculo_id');
+        $mercadoria->cliente_id = Input::get('cliente');
+        $mercadoria->veiculo_id = Input::get('veiculo');
         $mercadoria->save();
 
         return redirect()->route('mercadorias.index');

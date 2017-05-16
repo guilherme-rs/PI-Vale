@@ -1,8 +1,5 @@
 @extends('layouts.principal')
 @section('titulo', 'Pagina de Veiculos')
-@section('estilos')
-    <link href="css/app.css" rel="stylesheet">
-@endsection
 @section('conteudo')
     <h1> Pagina de Veiculos </h1>
 

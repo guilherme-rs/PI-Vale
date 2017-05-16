@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Cliente;
+use App\Motorista;
 use App\Mercadoria;
 use App\Veiculo;
 use Illuminate\Support\ServiceProvider;
@@ -37,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('veiculos.index', function ($view){
             $veiculos = Veiculo::get();
             $view->with('veiculos', $veiculos);
+        });
+        view()->composer('motoristas.index', function ($view){
+            $motoristas = Motorista::get();
+            $view->with('motoristas', $motoristas);
         });
 
     }

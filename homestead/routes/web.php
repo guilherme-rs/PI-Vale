@@ -45,3 +45,5 @@ Route::resource('mercadorias', 'MercadoriasController');
 Route::resource('clientes', 'ClientesController');
 
 Route::resource('veiculos', 'VeiculosController');
+
+Route::resource('motoristas', 'MotoristasController');
