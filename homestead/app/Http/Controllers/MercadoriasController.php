@@ -15,7 +15,8 @@ class MercadoriasController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index()    {
-        return view('mercadorias.index');
+		$mercadorias = Mercadoria::get();
+        return view('mercadorias.index', ['mercadorias' => $mercadorias]);
     }
 
     /**
@@ -165,6 +166,6 @@ class MercadoriasController extends Controller{
         //$mercadorias = Mercadoria::where('veiculo_id', 2)->get();
         //$mercadorias = Mercadoria::onlyTrashed()->get();
         $mercadorias = Mercadoria::get();
-        return response()->json($mercadorias);
+		return response()->json($mercadorias, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
 }

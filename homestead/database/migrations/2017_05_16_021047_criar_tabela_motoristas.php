@@ -19,6 +19,13 @@ class CriarTabelaMotoristas extends Migration
             $table->string('cnh', 255)->unique()->index();
             $table->integer('idade');
             $table->string('habilitacao')->index();
+
+            $table->integer('veiculo_id')->unsigned();
+            $table->foreign('veiculo_id')
+                ->references('id')
+                ->on('veiculos')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

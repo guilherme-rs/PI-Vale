@@ -4,7 +4,7 @@
     <div class="container">
 		<div class="col-xs-8">
 			<h2>Cadastro de Veiculo</h2>
-			<form method="post" action="{{ route('clientes.store') }}">
+			<form method="post" action="{{ route('veiculos.store') }}">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
 					<label for="marca">Marca:</label>

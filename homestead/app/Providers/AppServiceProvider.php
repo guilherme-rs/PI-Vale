@@ -6,6 +6,7 @@ use App\Cliente;
 use App\Motorista;
 use App\Mercadoria;
 use App\Veiculo;
+use App\Renavan;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,25 +26,15 @@ class AppServiceProvider extends ServiceProvider
             $view->with('mercadorias', $mercadorias);
         });
 
-        view()->composer('mercadorias.index', function ($view){
-            $mercadorias = Mercadoria::get();
-            $view->with('mercadorias', $mercadorias);
-        });
-
         view()->composer('clientes.index', function ($view){
             $clientes = Cliente::get();
             $view->with('clientes', $clientes);
         });
 		
-        view()->composer('veiculos.index', function ($view){
-            $veiculos = Veiculo::get();
-            $view->with('veiculos', $veiculos);
-        });
         view()->composer('motoristas.index', function ($view){
             $motoristas = Motorista::get();
             $view->with('motoristas', $motoristas);
         });
-
     }
 
     /**

@@ -15,6 +15,7 @@
         <th>CNH</th>
         <th>Idade</th>
         <th>Habilitação</th>
+        <th style="text-align: center">Veiculos</th>
         </thead>
         <tbody>
 
@@ -25,6 +26,11 @@
                 <td>{{ $item -> cnh }}</td>
                 <td>{{ $item -> idade }}</td>
                 <td>{{ $item -> habilitacao }}</td>
+                <td style="text-align: center">
+                    <a href="{{route('motoristas.show', ['id'=> $item->id])}}">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </a>
+                </td>
                 <td class="opcoes">
                     <a href="{{route('motoristas.edit', ['id' => $item->id])}}">
                         <span class="glyphicon glyphicon-pencil"></span>

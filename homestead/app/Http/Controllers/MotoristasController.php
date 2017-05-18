@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Motorista;
+use App\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -22,8 +23,8 @@ class MotoristasController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function create()    {
-
-        return view('motoristas.create');
+		$veiculos = Veiculo::get();
+        return view('motoristas.create', ['veiculos' => $veiculos]);
     }
 
     /**
@@ -34,11 +35,15 @@ class MotoristasController extends Controller{
      */
     public function store(Request $request)    {
         $motorista = new Motorista();
+
         $motorista->nome = Input::get('nome');
         $motorista->cnh = Input::get('cnh');
         $motorista->idade = Input::get('idade');
         $motorista->habilitacao = Input::get('habilitacao');
+        $motorista->veiculo_id = Input::get('veiculo');
         $motorista->save();
+
+        $motorista->veiculos()->attach(Input::get('veiculo'));
 
         return redirect()->route('motoristas.index');
     }
@@ -51,7 +56,7 @@ class MotoristasController extends Controller{
      */
     public function show($id)    {
         $motorista = Motorista::find($id);
-        return view('motoristas.detalhes', ['motorista' => $motorista]);
+        return view('motoristas.show', ['motorista' => $motorista]);
     }
 
     /**
@@ -62,13 +67,16 @@ class MotoristasController extends Controller{
      */
     public function edit($id)    {
         $motorista = Motorista::find($id);
+        $veiculos = Veiculo::get();
 
         return view('motoristas.edit', [
             'id' => $motorista->id,
             'nome' => $motorista->nome,
             'cnh' => $motorista->cnh,
             'idade' => $motorista->idade,
-            'habilitacao' => $motorista->habilitacao
+            'habilitacao' => $motorista->habilitacao,
+            'veiculo_id' => $motorista->veiculo_id,
+            'veiculos' => $veiculos
         ]);
     }
 
@@ -85,6 +93,9 @@ class MotoristasController extends Controller{
         $motorista->cnh = Input::get('cnh');
         $motorista->idade = Input::get('idade');
         $motorista->habilitacao = Input::get('habilitacao');
+
+        $motorista->veiculos()->attach(Input::get('veiculo'));
+        
         $motorista->save();
 
         return redirect()->route('motoristas.index');

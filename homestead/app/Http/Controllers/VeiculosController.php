@@ -13,9 +13,8 @@ class VeiculosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        //$veiculo = Veiculo::all();
-        //return view('veiculos.index', $veiculo);
-        return view('veiculos.index');
+		$veiculos = Veiculo::get();
+		return view('veiculos.index', ['veiculos' => $veiculos]);
     }
 
     /**

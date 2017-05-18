@@ -16,6 +16,13 @@ class CriarTabelaRenavans extends Migration
         Schema::create('renavans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('numero', 255);
+
+            $table->integer('veiculo_id')->unsigned();
+            $table->foreign('veiculo_id')
+                ->references('id')
+                ->on('veiculos')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

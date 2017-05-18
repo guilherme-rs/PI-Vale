@@ -8,7 +8,7 @@
         <span class="glyphicon glyphicon-plus">Add</span>
     </a>
 
-    <table class="table table-hover">
+    <table class="table table-hover" style="overflow: scroll;">
         <thead>
         <th>ID</th>
         <th>Código de Barras</th>

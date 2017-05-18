@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.principal');
 });
 
 Route::get('/login', function () {
@@ -47,3 +47,5 @@ Route::resource('clientes', 'ClientesController');
 Route::resource('veiculos', 'VeiculosController');
 
 Route::resource('motoristas', 'MotoristasController');
+
+Route::resource('renavans', 'RenavansController');

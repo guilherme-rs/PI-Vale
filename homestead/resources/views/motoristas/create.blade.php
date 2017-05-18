@@ -23,6 +23,18 @@
 					<label for="habilitacao">Habilitacão:</label>
 					<input type="text" class="form-control" id="habilitacao" placeholder="Informe o tipo de habilitação" name="habilitacao">
 				</div>
+				<div class="form-group">
+					<label for="veiculo">Veiculo:</label>
+					<select name="veiculo" id="veiculo" class="form-control">
+						@forelse($veiculos as $item){
+							<option value="{{ $item -> id }}" id="veiculo" >{{ $item -> modelo }}</option>
+						}
+						@empty{
+							<option disabled id="veiculo" > Nenhum veiculo cadastrado. </option>
+						}
+						@endforelse
+					</select>
+				</div>
 				<button type="submit" class="btn btn-default">Cadastrar</button>
 			</form>
 		</div>

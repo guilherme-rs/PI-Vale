@@ -27,7 +27,7 @@
 				<div class="form-group">
 					<label for="ativo">Ativo: </label>
 					<select name="ativo" id="ativo" class="form-control" value="{{$ativo}}">
-						@if($ativo == 1){
+						@if($ativo == "Ativo"){
 							<option value="1" id="ativo" selected>Ativo</option>
 							<option value="0" id="ativo">Inativo</option>
 						}

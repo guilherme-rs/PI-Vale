@@ -45,8 +45,8 @@ class ClientesController extends Controller
         $clliente->ativo = Input::get('ativo');
         $clliente->obs = Input::get('obs');
         $clliente->save();
-        return response()->json($clliente);
-        //return redirect()->route('clientes.index');
+        //return response()->json($clliente);
+        return redirect()->route('clientes.index');
     }
 
 
@@ -70,6 +70,8 @@ class ClientesController extends Controller
      */
     public function edit($id)    {
         $cliente = Cliente::find($id);
+        //return response()->json($cliente);
+
         return view('clientes.edit', [
             'id' => $cliente->id,
             'razao' => $cliente->razao,
@@ -79,6 +81,7 @@ class ClientesController extends Controller
             'ativo' => $cliente->ativo,
             'obs' => $cliente->obs
         ]);
+
     }
 
     /**

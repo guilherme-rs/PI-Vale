@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Renavan;
+use App\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -13,7 +14,8 @@ class RenavansController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index()    {
-        return view('motoristas.index');
+		$renavans = Renavan::get();
+        return view('renavans.index', ['renavans' => $renavans]);
     }
 
     /**
@@ -22,8 +24,8 @@ class RenavansController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function create()    {
-
-        return view('motoristas.create');
+		$veiculos = Veiculo::get();
+        return view('renavans.create', ['veiculos' => $veiculos]);
     }
 
     /**
@@ -33,14 +35,12 @@ class RenavansController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)    {
-        $motorista = new Motorista();
-        $motorista->nome = Input::get('nome');
-        $motorista->cnh = Input::get('cnh');
-        $motorista->idade = Input::get('idade');
-        $motorista->habilitacao = Input::get('habilitacao');
-        $motorista->save();
+        $renavan = new Renavan();
+        $renavan->numero = Input::get('numero');
+        $renavan->veiculo_id = Input::get('veiculo');
+        $renavan->save();
 
-        return redirect()->route('motoristas.index');
+        return redirect()->route('renavans.index');
     }
 
     /**
@@ -50,8 +50,6 @@ class RenavansController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function show($id)    {
-        $motorista = Motorista::find($id);
-        return view('motoristas.detalhes', ['motorista' => $motorista]);
     }
 
     /**
@@ -61,14 +59,14 @@ class RenavansController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function edit($id)    {
-        $motorista = Motorista::find($id);
+        $renavan = Renavan::find($id);
+		$veiculos = Veiculo::get();
 
-        return view('motoristas.edit', [
-            'id' => $motorista->id,
-            'nome' => $motorista->nome,
-            'cnh' => $motorista->cnh,
-            'idade' => $motorista->idade,
-            'habilitacao' => $motorista->habilitacao
+        return view('renavans.edit', [
+            'id' => $renavan->id,
+            'numero' => $renavan->numero,
+            'veiculo_id' => $renavan->veiculo_id,
+			'veiculos' => $veiculos
         ]);
     }
 
@@ -80,14 +78,12 @@ class RenavansController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)    {
-        $motorista = Motorista::find($id);
-        $motorista->nome = Input::get('nome');
-        $motorista->cnh = Input::get('cnh');
-        $motorista->idade = Input::get('idade');
-        $motorista->habilitacao = Input::get('habilitacao');
-        $motorista->save();
+        $renavan = Renavan::find($id);
+        $renavan->numero = Input::get('numero');
+        $renavan->veiculo_id = Input::get('veiculo');
+        $renavan->save();
 
-        return redirect()->route('motoristas.index');
+        return redirect()->route('renavans.index');
     }
 
     /**
@@ -97,8 +93,8 @@ class RenavansController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)    {
-        $motorista = Motorista::find($id);
-        $motorista->delete();
-        return redirect()->route('motoristas.index');
+        $renavan = Renavan::find($id);
+        $renavan->delete();
+        return redirect()->route('renavans.index');
     }
 }
