@@ -23,6 +23,8 @@
                         <li><a href="{{ route('checklists.index') }}">CheckList</a></li>
                         <li><a href="{{ route('funcionarios.index') }}">Funcionarios</a></li>
                         <li><a href="{{ route('predios.index') }}">Predios</a></li>
+                        <li><a href="{{ route('rotafugas.index') }}">Rotas de Fuga</a></li>
+                        <li><a href="{{ route('salas.index') }}">Salas</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

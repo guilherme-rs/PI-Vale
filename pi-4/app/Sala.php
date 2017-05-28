@@ -21,4 +21,8 @@ class Sala extends Model
         return $this->belongsTo(Predio::Class);
     }
 
+    public function rotafuga(){
+        return $this->belongsTo(Rotafuga::Class);
+    }
+
 }

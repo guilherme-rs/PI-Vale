@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Rotafuga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use File;
 
 class RotafugasController extends Controller
 {
@@ -13,7 +16,8 @@ class RotafugasController extends Controller
      */
     public function index()
     {
-        //
+        $rota = Rotafuga::get();
+        return view('rotafugas.index', ['rotas' => $rota]);
     }
 
     /**
@@ -23,7 +27,7 @@ class RotafugasController extends Controller
      */
     public function create()
     {
-        //
+        return view('rotafugas.create');
     }
 
     /**
@@ -34,7 +38,13 @@ class RotafugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rota = new Rotafuga();
+        $rota->descricao = Input::get('desc');
+        $rota->mapa = "";
+        $rota->caminhomapa = "";
+        $rota->save();
+
+        return redirect()->route('rotafugas.index');
     }
 
     /**
@@ -79,6 +89,9 @@ class RotafugasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rota = Rotafuga::find($id);
+        $rota->delete();
+
+        return redirect()->route('rotafugas.index');
     }
 }

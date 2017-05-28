@@ -9,42 +9,44 @@
 
     <table class="table table-hover">
         <thead>
-        <th>ID</th>
-        <th>Nome</th>
-        <th style="text-align: center">Lista de Salas</th>
-        <th>#</th>
-        <th>#</th>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Rota</th>
+            <th style="text-align: center">Rotas de Fuga</th>
+            <th>#</th>
+            <th>#</th>
         </thead>
         <tbody>
-        @forelse ($predios as $item)
-            <tr>
-                <td>{{ $item -> id }}</td>
-                <td>{{ $item -> nome}}</td>
-                <td style="text-align: center">
-                    <a href="{{route('rotafugas.show', ['id'=> $item->id])}}">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </a>
-                </td>
-                <td>
-                    <a href="{{route('rotafugas.edit', ['id' => $item->id])}}">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                </td>
-                <td>
-                    <form method="post" action="{{route('rotafugas.destroy',['id' => $item->id])}}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-sm btn-danger">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        @empty
-            <tr>
-                <td colspan="10">Nenhum cliente encontrado.</td>
-            </tr>
-        @endforelse
+            @forelse ($rotas as $item)
+                <tr>
+                    <td>{{ $item -> id }}</td>
+                    <td>{{ $item -> descricao}}</td>
+                    <td>{{ $item -> mapa}}</td>
+                    <td style="text-align: center">
+                        <a href="{{route('rotafugas.show', ['id'=> $item->id])}}">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{route('rotafugas.edit', ['id' => $item->id])}}">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <form method="post" action="{{route('rotafugas.destroy',['id' => $item->id])}}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="10">Nenhuma rota encontrada.</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 @endsection
