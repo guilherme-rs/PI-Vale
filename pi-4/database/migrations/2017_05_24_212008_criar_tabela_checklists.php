@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaVisitantes extends Migration
+class CriarTabelaChecklists extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,21 @@ class CriarTabelaVisitantes extends Migration
      */
     public function up()
     {
-        Schema::create('visitantes', function (Blueprint $table) {
+        Schema::create('checklists', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('autorizacao', 255);
-
-            $table->integer('sala_id')->unsigned();
-            $table->foreign('sala_id')
-                ->references('id')
-                ->on('salas')
-                ->onDelete('cascade');
+            $table->date('data');
+            $table->tinyInteger('estado')->index();
 
             $table->integer('pessoa_id')->unsigned();
             $table->foreign('pessoa_id')
                 ->references('id')
                 ->on('pessoas')
+                ->onDelete('cascade');
+
+            $table->integer('incidente_id')->unsigned();
+            $table->foreign('incidente_id')
+                ->references('id')
+                ->on('incidentes')
                 ->onDelete('cascade');
 
             $table->timestamps();
@@ -40,6 +41,6 @@ class CriarTabelaVisitantes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('visitantes');
+        Schema::dropIfExists('checklists');
     }
 }

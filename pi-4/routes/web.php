@@ -12,5 +12,23 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.main');
 });
+
+Route::resource('checklists', 'ChecklistsController');
+
+Route::resource('funcionarios', 'FuncionariosController');
+
+Route::resource('incidentes', 'IncidentesController');
+
+Route::resource('pessoas', 'PessoasController');
+
+Route::resource('predios', 'PrediosController');
+
+Route::resource('rotafugas', 'RotafugasController');
+
+Route::resource('salas', 'SalasController');
+
+Route::resource('telefones', 'TelefonesController');
+
+Route::resource('visitantes', 'VisitantesController');

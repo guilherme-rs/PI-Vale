@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaChecklists extends Migration
+class CriarTabelaTelefones extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CriarTabelaChecklists extends Migration
      */
     public function up()
     {
-        Schema::create('checklists', function (Blueprint $table) {
+        Schema::create('telefones', function (Blueprint $table) {
             $table->increments('id');
-			$table->date('data');
-			$table->tinyInteger('estado')->index();
-			$table->timestamps();
+            $table->string('numero',9);
+            $table->string('carrier', 3)->index();
+            $table->string('descricao', 50)->nullable();
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ class CriarTabelaChecklists extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('checklists');
+        Schema::dropIfExists('telefones');
     }
 }

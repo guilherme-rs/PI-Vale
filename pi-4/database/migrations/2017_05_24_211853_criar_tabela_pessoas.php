@@ -19,13 +19,6 @@ class CriarTabelaPessoas extends Migration
             $table->string('cpf', 255);
             $table->string('rg', 255);
             $table->string('email', 255);
-
-            $table->integer('checklist_id')->unsigned();
-            $table->foreign('checklist_id')
-                ->references('id')
-                ->on('checklists')
-                ->onDelete('cascade');
-
             $table->timestamps();
         });
     }

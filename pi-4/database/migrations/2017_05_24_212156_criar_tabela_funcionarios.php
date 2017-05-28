@@ -19,16 +19,17 @@ class CriarTabelaFuncionarios extends Migration
             $table->string('senha', 255);
             $table->tinyInteger('liderFuga');
 
-            $table->integer('sala_id')->unsigned();
-            $table->foreign('sala_id')
-                ->references('id')
-                ->on('salas')
-                ->onDelete('cascade');
-
             $table->integer('pessoa_id')->unsigned();
             $table->foreign('pessoa_id')
                 ->references('id')
                 ->on('pessoas')
+                ->onDelete('cascade');
+
+
+            $table->integer('sala_id')->unsigned();
+            $table->foreign('sala_id')
+                ->references('id')
+                ->on('salas')
                 ->onDelete('cascade');
 
             $table->timestamps();

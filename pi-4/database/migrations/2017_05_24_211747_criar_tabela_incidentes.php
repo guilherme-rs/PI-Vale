@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaTelefoneUteis extends Migration
+class CriarTabelaIncidentes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CriarTabelaTelefoneUteis extends Migration
      */
     public function up()
     {
-        Schema::create('telefonesuteis', function (Blueprint $table) {
+        Schema::create('incidentes', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('numero',9);
-			$table->string('carrier', 3)->index();
-			$table->string('descricao', 50)->nullable();
+            $table->date('data')->index();
+            $table->string('descricao');
+            $table->tinyInteger('alertaAbandono');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CriarTabelaTelefoneUteis extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('telefonesuteis');
+        Schema::dropIfExists('incidentes');
     }
 }

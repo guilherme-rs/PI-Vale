@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaIncidentes extends Migration
+class CriarTabelaVisitantes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CriarTabelaIncidentes extends Migration
      */
     public function up()
     {
-        Schema::create('incidentes', function (Blueprint $table) {
+        Schema::create('visitantes', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('data')->index();
-            $table->string('descricao');
-            $table->tinyInteger('alertaAbandono');
+            $table->string('autorizacao', 255);
 
-            $table->integer('checklist_id')->unsigned();
-            $table->foreign('checklist_id')
+            $table->integer('pessoa_id')->unsigned();
+            $table->foreign('pessoa_id')
                 ->references('id')
-                ->on('checklists')
+                ->on('pessoas')
                 ->onDelete('cascade');
 
             $table->timestamps();
@@ -36,6 +34,6 @@ class CriarTabelaIncidentes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('incidentes');
+        Schema::dropIfExists('visitantes');
     }
 }
