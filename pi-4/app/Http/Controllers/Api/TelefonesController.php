@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Telefone;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class TelefonesController extends Controller
 {
@@ -34,9 +35,13 @@ class TelefonesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        $telefone = new Telefone();
+        $telefone->numero = Input::get('numero');
+        $telefone->carrier = Input::get('carrier');
+        $telefone->descricao = Input::get('descricao');
+        $telefone->save();
+        return $telefone;
     }
 
     /**
@@ -47,7 +52,7 @@ class TelefonesController extends Controller
      */
     public function show($id)
     {
-        //
+        return Telefone::find($id);
     }
 
     /**
@@ -68,9 +73,19 @@ class TelefonesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+        $telefone = Telefone::find($id);
+
+        if($telefone){
+            $telefone->numero = Input::get('numero');
+            $telefone->carrier = Input::get('carrier');
+            $telefone->descricao = Input::get('descricao');
+            $telefone->save();
+            return $telefone;
+        }
+        return response()->json([
+            'erro' => 'Sala inexistente'
+        ]);
     }
 
     /**
@@ -81,6 +96,16 @@ class TelefonesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $telefone = Telefone::find($id);
+
+        if($telefone){
+            $telefone->delete();
+            return response()->json([
+                'mensagem' => 'Sala excluida'
+            ]);
+        }
+        return response()->json([
+            'erro' => 'Sala inexistente'
+        ]);
     }
 }

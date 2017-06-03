@@ -169,6 +169,12 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
+         * Soap CLient
+         */
+
+        Artisaninweb\SoapWrapper\ServiceProvider::Class,
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -225,6 +231,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'SoapWrapper' => Artisaninweb\SoapWrapper\Facade::Class,
 
     ],
 

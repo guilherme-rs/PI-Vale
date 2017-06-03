@@ -21,4 +21,8 @@ class Funcionario extends Model
         return $this->belongsTo(Sala::Class);
     }
 
+    public function getLiderFugaAttribute ($value){
+        return $value == 1 ? 'Sim' : 'Não';
+    }
+
 }

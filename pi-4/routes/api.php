@@ -18,5 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['namespace' => 'Api'], function(){
-    Route::resource('telefones', 'TelefonesController');
+    //route::resource('telefones', 'TelefonesController');
+    Route::get('telefones', 'TelefonesController@index');
+    Route::post('telefones', 'TelefonesController@store');
+    Route::get('telefones/{telefone}', 'TelefonesController@show');
+    Route::put('telefones/{telefone}', 'TelefonesController@update');
+    Route::delete('telefones/{telefone}', 'TelefonesController@destroy');
+
+    Route::get('soap', 'SoapController@show');
 });

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Telefone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class TelefonesController extends Controller
 {
@@ -13,7 +15,8 @@ class TelefonesController extends Controller
      */
     public function index()
     {
-        //
+        $telefones = Telefone::get();
+        return view('telefones.index', ['telefones' => $telefones]);
     }
 
     /**
@@ -23,7 +26,7 @@ class TelefonesController extends Controller
      */
     public function create()
     {
-        //
+        return view('telefones.create');
     }
 
     /**
@@ -34,7 +37,14 @@ class TelefonesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $telefone = new Telefone();
+        $telefone -> numero = Input::get('numero');
+        $telefone -> carrier = Input::get('carrier');
+        $telefone -> descricao = Input::get('descricao');
+
+        $telefone -> save();
+        //return response()->json($telefone);
+        return redirect()->route('telefones.index');
     }
 
     /**
@@ -56,7 +66,13 @@ class TelefonesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $telefone = Telefone::find($id);
+        return view('telefones.edit',[
+            'id' => $telefone->id,
+            'numero' => $telefone->numero,
+            'carrier' => $telefone->carrier,
+            'descricao' => $telefone->descricao,
+        ]);
     }
 
     /**
@@ -68,7 +84,14 @@ class TelefonesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $telefone = Telefone::find($id);
+        $telefone -> numero = Input::get('numero');
+        $telefone -> carrier = Input::get('carrier');
+        $telefone -> descricao = Input::get('descricao');
+
+        $telefone -> save();
+
+        return redirect()->route('telefones.index');
     }
 
     /**
@@ -79,6 +102,8 @@ class TelefonesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $telefone = Telefone::find($id);
+        $telefone -> delete();
+        return redirect()->route('telefones.index');
     }
 }

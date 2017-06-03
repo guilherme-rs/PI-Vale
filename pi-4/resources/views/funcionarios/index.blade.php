@@ -13,31 +13,33 @@
             <th>Nome</th>
             <th>CPF</th>
             <th>RG</th>
-            <th>Matricula</th>
             <th>E-Mail</th>
+            <th>Matricula</th>
             <th>Lider de Fuga</th>
-            <th>Autorização</th>
+            <th>Predio</th>
+            <th>Sala</th>
             <th>#</th>
             <th>#</th>
         </thead>
         <tbody>
-            @forelse ($pessoas as $item)
+            @forelse ($funcionarios as $item)
                 <tr>
                     <td>{{ $item -> id }}</td>
-                    <td>{{ $item -> nome}}</td>
-                    <td>{{ $item -> cpf}}</td>
-                    <td>{{ $item -> rg}}</td>
-                    <td>{{ $item -> funcionarios -> matricula}}</td>
-                    <td>{{ $item -> email}}</td>
-                    <td>{{ $item -> funcionarios -> liderFuga}}</td>
-                    <td>{{ $item -> visitantes -> autorizacao}}</td>
+                    <td>{{ $item -> pessoa -> nome}}</td>
+                    <td>{{ $item -> pessoa -> cpf}}</td>
+                    <td>{{ $item -> pessoa -> rg}}</td>
+                    <td>{{ $item -> pessoa -> email}}</td>
+                    <td>{{ $item -> matricula}}</td>
+                    <td>{{ $item -> liderFuga}}</td>
+                    <td>{{ $item -> sala -> predio -> nome}}</td>
+                    <td>{{ $item -> sala -> nome}}</td>
                     <td>
-                        <a href="{{route('funcionarios.edit', ['id' => $item->id])}}">
+                        <a href="{{ route('funcionarios.edit', ['id' => $item->id]) }}">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                     </td>
                     <td>
-                        <form method="post" action="{{route('funcionarios.destroy',['id' => $item->id])}}">
+                        <form method="post" action="{{ route('funcionarios.destroy',['id' => $item->id]) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-sm btn-danger">
@@ -48,7 +50,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="10">Nenhum cliente encontrado.</td>
+                    <td colspan="10">Nenhum funcionario cadastrado.</td>
                 </tr>
             @endforelse
         </tbody>

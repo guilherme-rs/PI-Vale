@@ -21,12 +21,12 @@ class FuncionariosController extends Controller
     {
         $funcionarios = Funcionario::get();
         $pessoas = Pessoa::get();
-        $visitantes = Visitante::get();
+        //$visitantes = Visitante::get();
 
         return view('funcionarios.index', [
             'funcionarios' => $funcionarios,
             'pessoas' => $pessoas,
-            'visitantes' => $visitantes
+            //'visitantes' => $visitantes
         ]);
     }
 
@@ -59,9 +59,13 @@ class FuncionariosController extends Controller
 
         $funcionario = new Funcionario();
         $funcionario->matricula = Input::get('matricula');
+        $funcionario->senha = Input::get('matricula');
         $funcionario->liderFuga = (bool)Input::get('liderFuga');
         $funcionario->pessoa_id = $pessoa->id;
+        $funcionario->sala_id = Input::get('sala');
         $funcionario->save();
+
+        return redirect()->route('funcionarios.index');
 
     }
 
@@ -84,7 +88,22 @@ class FuncionariosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $funcionario = Funcionario::find($id);
+        $pessoa = Pessoa::find($funcionario -> pessoa_id);
+        $salas = Sala::get();
+        return view('funcionarios.edit',[
+            'id' => $funcionario -> id,
+            'nome' => $pessoa -> nome,
+            'cpf' => $pessoa -> cpf,
+            'rg' => $pessoa -> rg,
+            'email' => $pessoa -> email,
+            'matricula' => $funcionario -> matricula,
+            'liderFuga' => $funcionario -> liderFuga,
+            'sala_id' => $funcionario -> sala_id,
+            'salas' => $salas
+        ]);
+
+
     }
 
     /**
@@ -96,7 +115,25 @@ class FuncionariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $funcionario = Funcionario::find($id);
+        $pessoa = Pessoa::find($funcionario -> pessoa_id);
+
+        $pessoa->nome = Input::get('nome');
+        $pessoa->cpf = Input::get('cpf');
+        $pessoa->rg = Input::get('rg');
+        $pessoa->email = Input::get('email');
+
+        $pessoa->save();
+
+
+        $funcionario->matricula = Input::get('matricula');
+        $funcionario->senha = Input::get('matricula');
+        $funcionario->liderFuga = (bool)Input::get('liderFuga');
+        $funcionario->pessoa_id = $pessoa->id;
+        $funcionario->sala_id = Input::get('sala');
+        $funcionario->save();
+
+        return redirect()->route('funcionarios.index');
     }
 
     /**
@@ -107,6 +144,8 @@ class FuncionariosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $funcionario = Funcionario::find($id);
+        $funcionario -> delete();
+        return redirect()->route('funcionarios.index');
     }
 }

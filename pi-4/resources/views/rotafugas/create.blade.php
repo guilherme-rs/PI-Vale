@@ -5,7 +5,7 @@
         <div class="col-xs-8">
             <h1> Cadastro de Rota de Fuga </h1>
 
-            <form method="post" action="{{ route('rotafugas.store') }}">
+            <form method="post" action="{{ route('rotafugas.store') }}" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <label for="desc">Descrição: </label>
