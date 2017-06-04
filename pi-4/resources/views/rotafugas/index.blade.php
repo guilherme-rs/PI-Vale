@@ -22,11 +22,12 @@
                     <td>{{ $item -> id }}</td>
                     <td>{{ $item -> descricao}}</td>
                     <td>{{ $item -> mapa}}</td>
-                    <td style="text-align: center">
+                    <td><img width="100" src="{{ $item -> caminhomapa }}"></td>
+                    {{--<td style="text-align: center">
                         <a href="{{route('rotafugas.show', ['id'=> $item->id])}}">
                             <span class="glyphicon glyphicon-search"></span>
                         </a>
-                    </td>
+                    </td>--}}
                     <td>
                         <a href="{{route('rotafugas.edit', ['id' => $item->id])}}">
                             <span class="glyphicon glyphicon-pencil"></span>
@@ -44,7 +45,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="10">Nenhuma rota encontrada.</td>
+                    <td colspan="6">Nenhuma rota encontrada.</td>
                 </tr>
             @endforelse
         </tbody>

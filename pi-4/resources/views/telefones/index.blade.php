@@ -40,7 +40,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="10">Nenhum telefone cadastrado.</td>
+                    <td colspan="6">Nenhum telefone cadastrado.</td>
                 </tr>
             @endforelse
         </tbody>

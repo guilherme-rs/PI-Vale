@@ -42,7 +42,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="10">Nenhuma sala cadastrada.</td>
+                    <td colspan="7">Nenhuma sala cadastrada.</td>
                 </tr>
             @endforelse
         </tbody>

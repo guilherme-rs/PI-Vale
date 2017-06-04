@@ -42,7 +42,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="10">Nenhum cliente encontrado.</td>
+                <td colspan="5">Nenhum predio cadastrado.</td>
             </tr>
         @endforelse
         </tbody>

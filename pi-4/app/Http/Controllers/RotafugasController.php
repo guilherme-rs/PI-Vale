@@ -38,19 +38,26 @@ class RotafugasController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-            $file = Input::file('image');
-            $destinationPath = 'upload/';
-            $filename = $file->getClientOriginalName();
-            Input::file('image')->move($destinationPath, $filename);
-         */
+        $var = "/home/vagrant/Code/pi-4/public/imagens/rota1496588431.png";
 
 
-        $rota = new Rotafuga();
-        $rota->descricao = Input::get('desc');
-        $rota->mapa = Input::file('rota');
-        $rota->caminhomapa = "";
-        $rota->save();
+        $imagem = $request->file('rota');
+
+        $pasta = public_path() . '/imagens';
+
+        $nome_imagem = 'rota' . time() . '.' . $imagem->getClientOriginalExtension();
+
+        // Move arquivo para pasta
+        $nova_imagem = $imagem->move($pasta, $nome_imagem);
+        $sub_var = substr($nova_imagem,31);
+
+        $rotafugas = new Rotafuga();
+        $rotafugas -> descricao  = Input::get('desc');
+        $rotafugas -> mapa = $nome_imagem;
+        $rotafugas -> caminhomapa = $sub_var;
+        $rotafugas -> save();
+
+        //return response()->json($rotafugas);
 
         return redirect()->route('rotafugas.index');
     }
