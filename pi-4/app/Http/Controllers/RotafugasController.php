@@ -6,6 +6,7 @@ use App\Rotafuga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use File;
+use Illuminate\Support\Facades\Storage;
 
 class RotafugasController extends Controller
 {
@@ -38,9 +39,6 @@ class RotafugasController extends Controller
      */
     public function store(Request $request)
     {
-        $var = "/home/vagrant/Code/pi-4/public/imagens/rota1496588431.png";
-
-
         $imagem = $request->file('rota');
 
         $pasta = public_path() . '/imagens';
@@ -81,7 +79,14 @@ class RotafugasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $rota = Rotafuga::find($id);
+        //return response()->json($rota);
+        return view('rotafugas.edit',[
+            'id' => $rota->id,
+            'descricao' => $rota->descricao,
+            'mapa' => $rota->mapa,
+            'caminhomapa' => $rota->caminhomapa
+        ]);
     }
 
     /**
@@ -93,7 +98,25 @@ class RotafugasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $imagem = $request->file('rotaNova');
+
+        $pasta = public_path() . '/imagens';
+
+        $nome_imagem = 'rota' . time() . '.' . $imagem->getClientOriginalExtension();
+
+        // Move arquivo para pasta
+        $nova_imagem = $imagem->move($pasta, $nome_imagem);
+        $caminhomapa = substr($nova_imagem,31);
+
+
+        $rotafugas = Rotafuga::find($id);
+        $rotafugas -> caminhomapa = $caminhomapa;
+        $rotafugas -> descricao  = Input::get('descricao');
+        $rotafugas -> mapa = $nome_imagem;
+
+        $rotafugas -> save();
+
+        return redirect()->route('rotafugas.index');
     }
 
     /**
@@ -105,6 +128,8 @@ class RotafugasController extends Controller
     public function destroy($id)
     {
         $rota = Rotafuga::find($id);
+        //return response()->json(array($rota->caminhomapa, $rota->mapa));
+        unlink($rota->caminhomapa);
         $rota->delete();
 
         return redirect()->route('rotafugas.index');
