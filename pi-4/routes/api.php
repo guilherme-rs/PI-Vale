@@ -25,5 +25,19 @@ Route::group(['namespace' => 'Api'], function(){
     Route::put('telefones/{telefone}', 'TelefonesController@update');
     Route::delete('telefones/{telefone}', 'TelefonesController@destroy');
 
+    //Route::resource('predios', 'PrediosController');
+    Route::get('predios', 'PrediosController@index');
+    Route::post('predios', 'PrediosController@store');
+    Route::get('predios/{predio}', 'PrediosController@show');
+    Route::put('predios/{predio}', 'PrediosController@update');
+    Route::delete('predios/{predio}', 'PrediosController@destroy');
+
+//    Route::resource('funcionarios', 'FuncionariosController');
+    Route::get('funcionarios', 'FuncionariosController@index');
+    Route::post('funcionarios', 'FuncionariosController@store');
+    Route::get('funcionarios/{funcionario}', 'FuncionariosController@show');
+    Route::put('funcionarios/{funcionario}', 'FuncionariosController@update');
+    Route::delete('funcionarios/{funcionario}', 'FuncionariosController@destroy');
+
     Route::get('soap', 'SoapController@show');
 });

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Telefone;
+use App\Predio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
-class TelefonesController extends Controller
+class PrediosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class TelefonesController extends Controller
      */
     public function index()
     {
-        return Telefone::all();
+        return Predio::all();
     }
 
     /**
@@ -35,13 +35,12 @@ class TelefonesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-        $telefone = new Telefone();
-        $telefone->numero = Input::get('numero');
-        $telefone->carrier = Input::get('carrier');
-        $telefone->descricao = Input::get('descricao');
-        $telefone->save();
-        return $telefone;
+    public function store(Request $request)
+    {
+        $predio = new Predio();
+        $predio = Input::get('nome');
+        $predio->save();
+        return $predio;
     }
 
     /**
@@ -52,7 +51,7 @@ class TelefonesController extends Controller
      */
     public function show($id)
     {
-        return Telefone::find($id);
+        return Predio::find($id);
     }
 
     /**
@@ -73,18 +72,15 @@ class TelefonesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id){
-        $telefone = Telefone::find($id);
-
-        if($telefone){
-            $telefone->numero = Input::get('numero');
-            $telefone->carrier = Input::get('carrier');
-            $telefone->descricao = Input::get('descricao');
-            $telefone->save();
-            return $telefone;
+    public function update(Request $request, $id)
+    {
+        $predio = Predio::find($id);
+        if($predio) {
+            $predio->nome = Input::get('nome');
+            $predio->save();
         }
         return response()->json([
-            'erro' => 'Telefone inexistente'
+            'erro'=> 'Predio inexistente'
         ]);
     }
 
@@ -96,16 +92,16 @@ class TelefonesController extends Controller
      */
     public function destroy($id)
     {
-        $telefone = Telefone::find($id);
-
-        if($telefone){
-            $telefone->delete();
+        $predio = Predio::find($id);
+        if($predio){
+            $predio->delete();
             return response()->json([
-                'mensagem' => 'Telefone excluida'
+                'mensagem' => 'Predio excluido'
             ]);
         }
+
         return response()->json([
-            'erro' => 'Telefone inexistente'
+            'erro'=> 'Predio inexistente'
         ]);
     }
 }
