@@ -20,7 +20,7 @@
                         <a class="navbar-brand">Rota de Fuga Vale</a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ route('checklists.index') }}">CheckList</a></li>
+                        <li><a href="{{ route('incidentes.index') }}">Incidentes</a></li>
                         <li><a href="{{ route('funcionarios.index') }}">Funcionarios</a></li>
                         <li><a href="{{ route('predios.index') }}">Predios</a></li>
                         <li><a href="{{ route('rotafugas.index') }}">Rotas de Fuga</a></li>

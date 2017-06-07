@@ -13,5 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Incidente extends Model
 {
-
+    public function getAlertaAbandonoAttribute($value){
+        return $value == 1 ? 'Sim' : 'Não';
+    }
 }
