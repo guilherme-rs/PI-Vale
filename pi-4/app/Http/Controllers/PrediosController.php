@@ -39,6 +39,8 @@ class PrediosController extends Controller
     {
         $predio = new Predio();
         $predio->nome = Input::get('nome');
+        $predio->latitude = Input::get('latitude');
+        $predio->longitude = Input::get('longitude');
         $predio->save();
 
         return redirect()->route('predios.index');
@@ -66,7 +68,9 @@ class PrediosController extends Controller
         $predio = Predio::find($id);
         return view('predios.edit',[
            'id' => $predio->id,
-           'nome' => $predio->nome
+           'nome' => $predio->nome,
+           'latitude' => $predio->latitude,
+           'longitude' => $predio->longitude
         ]);
     }
 
@@ -81,6 +85,8 @@ class PrediosController extends Controller
     {
         $predio = Predio::find($id);
         $predio->nome = Input::get('nome');
+        $predio->latitude = Input::get('latitude');
+        $predio->longitude = Input::get('longitude');
         $predio->save();
 
         return redirect()->route('predios.index');

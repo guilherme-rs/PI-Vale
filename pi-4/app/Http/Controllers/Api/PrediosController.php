@@ -104,4 +104,10 @@ class PrediosController extends Controller
             'erro'=> 'Predio inexistente'
         ]);
     }
+
+    public function salas($id)
+    {
+        $predios = Predio::find($id);
+        return $predios-> salas;
+    }
 }

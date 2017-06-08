@@ -12,6 +12,14 @@
                     <label for="nome">Nome: </label>
                     <input type="text" class="form-control" id="nome" name="nome" value="{{ $nome }}">
                 </div>
+                <div class="form-group">
+                    <label for="latitude">Latitude: </label>
+                    <input type="text" class="form-control" id="latitude" name="latitude" value="{{ $latitude }}">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude: </label>
+                    <input type="text" class="form-control" id="longitude" name="longitude" value="{{ $longitude }}">
+                </div>
                 <button type="submit" class="btn btn-default">Cadastrar</button>
             </form>
         </div>

@@ -11,6 +11,9 @@
         <thead>
         <th>ID</th>
         <th>Nome</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Distancia</th>
         <th style="text-align: center">Lista de Salas</th>
         <th>#</th>
         <th>#</th>
@@ -20,6 +23,9 @@
             <tr>
                 <td>{{ $item -> id }}</td>
                 <td>{{ $item -> nome}}</td>
+                <td>{{ $item -> latitude}}</td>
+                <td>{{ $item -> longitude}}</td>
+                <td>{{ $item -> distancia}}</td>
                 <td style="text-align: center">
                     <a href="{{route('predios.show', ['id'=> $item->id])}}">
                         <span class="glyphicon glyphicon-search"></span>

@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-group">
                     <label >Imagem Rota: </label>
-                    <p><img width="500" src="/{{ $caminhomapa }}"name="rotaVelha"></p>
+                    <p><img width="500" src="/imagens/{{ $mapa }}"name="rotaVelha"></p>
                 </div>
                 <div class="form-group">
                     <label for="rotaNova">Imagem Rota: </label>

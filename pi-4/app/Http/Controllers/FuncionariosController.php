@@ -147,4 +147,16 @@ class FuncionariosController extends Controller
         $funcionario -> delete();
         return redirect()->route('funcionarios.index');
     }
+
+    public function status($id){
+        $funcionario = Funcionario::find($id);
+        if($funcionario->status === 1){
+            $funcionario->status = 0;
+        }
+        else{
+            $funcionario->status = 1;
+        }
+
+        return redirect()->route('funcionarios.index');
+    }
 }

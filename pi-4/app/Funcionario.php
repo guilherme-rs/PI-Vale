@@ -25,4 +25,8 @@ class Funcionario extends Model
         return $value == 1 ? 'Sim' : 'Não';
     }
 
+    public function getStatusAttribute ($value){
+        return $value == 1 ? 'Presente' : 'Falta';
+    }
+
 }

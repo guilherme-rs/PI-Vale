@@ -29,6 +29,7 @@ Route::group(['namespace' => 'Api'], function(){
     Route::get('predios', 'PrediosController@index');
     Route::post('predios', 'PrediosController@store');
     Route::get('predios/{predio}', 'PrediosController@show');
+    Route::get('predios/{predio}/salas', 'PrediosController@salas');
     Route::put('predios/{predio}', 'PrediosController@update');
     Route::delete('predios/{predio}', 'PrediosController@destroy');
 

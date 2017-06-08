@@ -16,6 +16,7 @@
             <th>E-Mail</th>
             <th>Matricula</th>
             <th>Lider de Fuga</th>
+            <th>Status</th>
             <th>Predio</th>
             <th>Sala</th>
             <th>#</th>
@@ -31,8 +32,18 @@
                     <td>{{ $item -> pessoa -> email}}</td>
                     <td>{{ $item -> matricula}}</td>
                     <td>{{ $item -> liderFuga}}</td>
+                    <td>{{ $item -> status}}</td>
                     <td>{{ $item -> sala -> predio -> nome}}</td>
                     <td>{{ $item -> sala -> nome}}</td>
+                    <td>
+                        <form method="post" action="{{ route('funcionarios.status',['id' => $item->id]) }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="_method" value="PATCH">
+                            <button type="submit">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </button>
+                        </form>
+                    </td>
                     <td>
                         <a href="{{ route('funcionarios.edit', ['id' => $item->id]) }}">
                             <span class="glyphicon glyphicon-pencil"></span>

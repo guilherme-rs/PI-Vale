@@ -12,7 +12,7 @@
             <th>ID</th>
             <th>Descrição</th>
             <th>Rota</th>
-            <th style="text-align: center">Rotas de Fuga</th>
+            <th>Rotas de Fuga</th>
             <th>#</th>
             <th>#</th>
         </thead>
@@ -22,7 +22,7 @@
                     <td>{{ $item -> id }}</td>
                     <td>{{ $item -> descricao}}</td>
                     <td>{{ $item -> mapa}}</td>
-                    <td><img width="100" src="{{ $item -> caminhomapa }}"></td>
+                    <td><img width="100" src="/imagens/{{ $item -> mapa }}"></td>
                     {{--<td style="text-align: center">
                         <a href="{{route('rotafugas.show', ['id'=> $item->id])}}">
                             <span class="glyphicon glyphicon-search"></span>

@@ -18,7 +18,7 @@ class CriarTabelaPessoas extends Migration
             $table->string('nome', 255);
             $table->string('cpf', 255);
             $table->string('rg', 255);
-            $table->string('email', 255);
+            $table->string('email', 255)->nullable();
             $table->timestamps();
         });
     }
