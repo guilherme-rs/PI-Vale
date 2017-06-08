@@ -4,7 +4,7 @@
     <h1> Lista de Telefones </h1>
 
     <a href="{{route('telefones.create')}}">
-        <span class="glyphicon glyphicon-plus">Adicionar</span>
+        <button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
     </a>
 
     <table class="table table-hover">
@@ -13,8 +13,8 @@
             <th>Numero</th>
             <th>Carrier</th>
             <th>Descrição</th>
-            <th>#</th>
-            <th>#</th>
+            <th>Editar</th>
+            <th>Excluir</th>
             </thead>
         <tbody>
             @forelse ($telefones as $item)

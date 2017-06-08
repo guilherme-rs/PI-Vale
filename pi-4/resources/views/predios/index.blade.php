@@ -4,7 +4,7 @@
     <h1> Lista de Predios </h1>
 
     <a href="{{route('predios.create')}}">
-        <span class="glyphicon glyphicon-plus">Adicionar</span>
+        <button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
     </a>
 
     <table class="table table-hover">
@@ -15,8 +15,8 @@
         <th>Longitude</th>
         <th>Distancia</th>
         <th style="text-align: center">Lista de Salas</th>
-        <th>#</th>
-        <th>#</th>
+        <th>Editar</th>
+        <th>Excluir</th>
         </thead>
         <tbody>
         @forelse ($predios as $item)
@@ -48,7 +48,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="5">Nenhum predio cadastrado.</td>
+                <td colspan="8">Nenhum predio cadastrado.</td>
             </tr>
         @endforelse
         </tbody>

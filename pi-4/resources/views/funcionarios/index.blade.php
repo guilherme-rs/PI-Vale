@@ -4,7 +4,7 @@
     <h1> Lista de Funcionarios </h1>
 
     <a href="{{route('funcionarios.create')}}">
-        <span class="glyphicon glyphicon-plus">Adicionar</span>
+        <button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
     </a>
 
     <table class="table table-hover">
@@ -13,14 +13,14 @@
             <th>Nome</th>
             <th>CPF</th>
             <th>RG</th>
-            <th>E-Mail</th>
+            <th>E-mail</th>
             <th>Matricula</th>
             <th>Lider de Fuga</th>
             <th>Status</th>
             <th>Predio</th>
             <th>Sala</th>
-            <th>#</th>
-            <th>#</th>
+            <th>Editar</th>
+            <th>Excluir</th>
         </thead>
         <tbody>
             @forelse ($funcionarios as $item)
@@ -35,15 +35,6 @@
                     <td>{{ $item -> status}}</td>
                     <td>{{ $item -> sala -> predio -> nome}}</td>
                     <td>{{ $item -> sala -> nome}}</td>
-                    <td>
-                        <form method="post" action="{{ route('funcionarios.status',['id' => $item->id]) }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="_method" value="PATCH">
-                            <button type="submit">
-                                <span class="glyphicon glyphicon-user"></span>
-                            </button>
-                        </form>
-                    </td>
                     <td>
                         <a href="{{ route('funcionarios.edit', ['id' => $item->id]) }}">
                             <span class="glyphicon glyphicon-pencil"></span>
@@ -61,7 +52,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="11">Nenhum funcionario cadastrado.</td>
+                    <td colspan="10">Nenhum funcionario cadastrado.</td>
                 </tr>
             @endforelse
         </tbody>

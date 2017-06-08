@@ -4,7 +4,7 @@
     <h1> Lista de Incidentes </h1>
 
     <a href="{{route('incidentes.create')}}">
-        <span class="glyphicon glyphicon-plus">Adicionar</span>
+        <button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
     </a>
 
     <table class="table table-hover">
@@ -13,8 +13,9 @@
         <th>Descrição</th>
         <th>Alerta abandono</th>
         <th>Data do incidente</th>
-        <th>#</th>
-        <th>#</th>
+        {{--<th>CheckList</th>--}}
+        <th>Editar</th>
+        <th>Excluir</th>
         </thead>
         <tbody>
         @forelse ($incidentes as $item)
@@ -40,7 +41,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="5">Nenhum predio cadastrado.</td>
+                <td colspan="6">Nenhum predio cadastrado.</td>
             </tr>
         @endforelse
         </tbody>

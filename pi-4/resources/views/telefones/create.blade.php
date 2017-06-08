@@ -19,7 +19,7 @@
                     <label for="descricao">Descrição: </label>
                     <input type="text" class="form-control" id="descricao" name="descricao">
                 </div>
-                <button type="submit" class="btn btn-default">Cadastrar</button>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
         </div>
     </div>

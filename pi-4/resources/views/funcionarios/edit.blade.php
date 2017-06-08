@@ -32,7 +32,7 @@
                     <input type="text" class="form-control" id="matricula" name="matricula" value="{{ $matricula }}">
                 </div>
                 <div class="form-group">
-                    <label for="email">E-Mail: </label>
+                    <label for="email">E-mail: </label>
                     <input type="email" class="form-control" id="email" name="email" value="{{ $email }}">
                 </div>
                 <div class="form-group">
@@ -59,11 +59,19 @@
                         <input type="checkbox" id="lider" name="liderFuga">
                     @endif
                 </div>
+                <div class="form-group">
+                    <label for="status">Status: </label>
+                    @if($status === 'Presente')
+                        <input type="checkbox" id="status" name="status" checked>
+                    @else
+                        <input type="checkbox" id="status" name="status">
+                    @endif
+                </div>
                 {{--<div class="form-group">
                     <label for="auth">Autorização: </label>
                     <input type="checkbox" id="auth" name="autorizacao">
                 </div>--}}
-                <button type="submit" class="btn btn-default">Cadastrar</button>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
         </div>
     </div>

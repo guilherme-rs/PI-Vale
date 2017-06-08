@@ -13,5 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Checklist extends  Model
 {
-
+    public function incidente(){
+        return $this->belongsTo(Incidente::Class);
+    }
 }

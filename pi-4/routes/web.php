@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::resource('checklists', 'ChecklistsController');
 
-Route::patch('funcionarios/{funcionario}', 'FuncionariosController@status')->name('funcionarios.status');
+//Route::patch('funcionarios/{funcionario}', 'FuncionariosController@status')->name('funcionarios.status');
 Route::resource('funcionarios', 'FuncionariosController');
 
 Route::resource('incidentes', 'IncidentesController');

@@ -7,7 +7,7 @@
         <meta name="keywords" content="Faculdade UCL">
         <meta name="author" content="Guilherme Rodrigues Sousa">
 
-        <title>Rota de Fuga Vale - @yield('titulo', 'Home Page') </title>
+        <title>Safe Path - @yield('titulo', 'Home Page') </title>
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         @yield('estilos')
@@ -17,7 +17,7 @@
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand">Rota de Fuga Vale</a>
+                        <a class="navbar-brand">Safe Path</a>
                     </div>
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('incidentes.index') }}">Incidentes</a></li>

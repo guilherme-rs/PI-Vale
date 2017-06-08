@@ -4,7 +4,7 @@
     <h1> Lista de Salas </h1>
 
     <a href="{{route('salas.create')}}">
-        <span class="glyphicon glyphicon-plus">Adicionar</span>
+        <button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
     </a>
 
     <table class="table table-hover">
@@ -14,8 +14,8 @@
             <th>Andar</th>
             <th>Predio</th>
             <th>Rota</th>
-            <th>#</th>
-            <th>#</th>
+            <th>Editar</th>
+            <th>Excluir</th>
             </thead>
         <tbody>
             @forelse ($salas as $item)

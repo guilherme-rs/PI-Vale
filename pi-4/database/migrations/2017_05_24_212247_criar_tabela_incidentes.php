@@ -18,6 +18,13 @@ class CriarTabelaIncidentes extends Migration
             $table->date('data')->index();
             $table->string('descricao');
             $table->tinyInteger('alertaAbandono');
+
+            $table->integer('funcionario_id')->unsigned();
+            $table->foreign('funcionario_id')
+                ->references('id')
+                ->on('funcionarios')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

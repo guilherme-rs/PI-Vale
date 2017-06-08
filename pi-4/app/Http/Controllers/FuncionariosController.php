@@ -99,6 +99,7 @@ class FuncionariosController extends Controller
             'matricula' => $funcionario -> matricula,
             'liderFuga' => $funcionario -> liderFuga,
             'sala_id' => $funcionario -> sala_id,
+            'status' => $funcionario -> status,
             'salas' => $salas
         ]);
 
@@ -130,6 +131,7 @@ class FuncionariosController extends Controller
         $funcionario->liderFuga = (bool)Input::get('liderFuga');
         $funcionario->pessoa_id = $pessoa->id;
         $funcionario->sala_id = Input::get('sala');
+        $funcionario->status = Input::get('status');
         $funcionario->save();
 
         return redirect()->route('funcionarios.index');

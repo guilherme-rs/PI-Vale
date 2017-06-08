@@ -16,7 +16,7 @@ class AddCamposTabelaPredios extends Migration
         Schema::table('predios', function (Blueprint $table) {
             $table->string('latitude', 255);
             $table->string('longitude', 255);
-            $table->integer('distacia')->default('0');
+            $table->integer('distancia')->default(0);
         });
     }
 

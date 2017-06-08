@@ -19,7 +19,7 @@
                     <label for="longitude">Longitude: </label>
                     <input type="text" class="form-control" id="longitude" name="longitude">
                 </div>
-                <button type="submit" class="btn btn-default">Cadastrar</button>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
         </div>
     </div>

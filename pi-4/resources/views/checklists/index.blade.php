@@ -4,7 +4,7 @@
     <h1> Lista de Checklists </h1>
 
     <a href="{{route('checklists.create')}}">
-        <span class="glyphicon glyphicon-plus">Adicionar</span>
+        <button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
     </a>
 
     <table class="table table-hover">
@@ -12,8 +12,8 @@
         <th>ID</th>
         <th>Data</th>
         <th>Estado</th>
-        <th>#</th>
-        <th>#</th>
+        <th>Editar</th>
+        <th>Excluir</th>
         </thead>
         <tbody>
         @forelse ($checklists as $item)
@@ -38,7 +38,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="7">Nenhum cliente encontrado.</td>
+                <td colspan="5">Nenhum cliente encontrado.</td>
             </tr>
         @endforelse
         </tbody>

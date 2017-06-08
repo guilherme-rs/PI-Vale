@@ -4,7 +4,7 @@
     <h1> Lista de Rotas de Fuga </h1>
 
     <a href="{{route('rotafugas.create')}}">
-        <span class="glyphicon glyphicon-plus">Adicionar</span>
+        <button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
     </a>
 
     <table class="table table-hover">
@@ -13,8 +13,8 @@
             <th>Descrição</th>
             <th>Rota</th>
             <th>Rotas de Fuga</th>
-            <th>#</th>
-            <th>#</th>
+            <th>Editar</th>
+            <th>Excluir</th>
         </thead>
         <tbody>
             @forelse ($rotas as $item)

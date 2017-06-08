@@ -20,7 +20,7 @@
                     <label for="rotaNova">Imagem Rota: </label>
                     <input type="file" class="form-control" id="rotaNova" name="rotaNova">
                 </div>
-                <button type="submit" class="btn btn-default">Cadastrar</button>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
         </div>
     </div>
