@@ -8,6 +8,16 @@
             <form method="post" action="{{ route('incidentes.store') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
+                    <label>Funcionario: </label>
+                    <select name="pessoa" class="form-control">
+                        @forelse($pessoas as $item)
+                            <option value="{{ $item -> id }}"> {{ $item -> nome }}</option>
+                        @empty
+                            <option disabled> Nenhum funcionario cadastrado </option>
+                        @endforelse
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="descricao">Descrição: </label>
                     <input type="text" class="form-control" id="descricao" name="descricao">
                 </div>

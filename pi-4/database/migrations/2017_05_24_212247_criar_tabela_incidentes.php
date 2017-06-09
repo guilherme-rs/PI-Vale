@@ -19,10 +19,10 @@ class CriarTabelaIncidentes extends Migration
             $table->string('descricao');
             $table->tinyInteger('alertaAbandono');
 
-            $table->integer('funcionario_id')->unsigned();
-            $table->foreign('funcionario_id')
+            $table->integer('pessoa_id')->unsigned();
+            $table->foreign('pessoa_id')
                 ->references('id')
-                ->on('funcionarios')
+                ->on('pessoas')
                 ->onDelete('cascade');
 
             $table->timestamps();

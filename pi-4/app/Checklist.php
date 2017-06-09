@@ -16,4 +16,12 @@ class Checklist extends  Model
     public function incidente(){
         return $this->belongsTo(Incidente::Class);
     }
+
+    public function pessoa(){
+        return $this->belongsTo(Pessoa::Class);
+    }
+
+    public function getEstadoAttribute($value){
+        return $value === 1 ? 'Aberto' : 'Fechado';
+    }
 }

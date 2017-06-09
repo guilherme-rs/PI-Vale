@@ -13,8 +13,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Incidente extends Model
 {
-    public function funcionario(){
-        return $this->belongsTo(Funcionario::Class);
+    public function pessoa(){
+        return $this->belongsTo(Pessoa::Class);
     }
 
     public function checklist(){

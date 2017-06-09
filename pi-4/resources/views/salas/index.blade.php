@@ -23,8 +23,8 @@
                     <td>{{ $item -> id }}</td>
                     <td>{{ $item -> nome}}</td>
                     <td>{{ $item -> andar}}</td>
-                    <td>{{ $item -> predio_id}}</td>
-                    <td>{{ $item -> rotafuga_id}}</td>
+                    <td>{{ $item -> predio -> nome}}</td>
+                    <td>{{ $item -> rotafuga -> descricao}}</td>
                     <td>
                         <a href="{{route('salas.edit', ['id' => $item->id])}}">
                             <span class="glyphicon glyphicon-pencil"></span>

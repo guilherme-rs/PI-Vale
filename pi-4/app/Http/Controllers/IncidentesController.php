@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Checklist;
 use App\Incidente;
+use App\Pessoa;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -28,7 +29,8 @@ class IncidentesController extends Controller
      */
     public function create()
     {
-        return view('incidentes.create');
+        $pessoas = Pessoa::get();
+        return view('incidentes.create', ['pessoas' => $pessoas]);
     }
 
     /**
@@ -42,13 +44,18 @@ class IncidentesController extends Controller
         $incidente = new Incidente();
         $incidente->descricao = Input::get('descricao');
         $incidente->alertaAbandono = (bool)Input::get('alerta');
-        if((bool)Input::get('alerta')){
-            $checklist = new Checklist();
-            $checklist->save();
-        }
+        $incidente->pessoa_id = Input::get('pessoa');
         $incidente->data = Carbon::now()->format('Y-m-d');
 //        return response()->json($incidente);
         $incidente->save();
+
+        if((bool)Input::get('alerta') === true){
+            $checklist = new Checklist();
+            $checklist->incidente_id = $incidente->id;
+            $checklist->pessoa_id = Input::get('pessoa');
+//            return response()->json($checklist);
+            $checklist->save();
+        }
 
         return redirect()->route('incidentes.index');
     }
@@ -61,7 +68,10 @@ class IncidentesController extends Controller
      */
     public function show($id)
     {
-        //
+        $checklist = Checklist::where('incidente_id', '=', $id)->get();
+//        return response()->json($checklist);
+        return view('incidentes.show', [
+            'checklist' => $checklist]);
     }
 
     /**

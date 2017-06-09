@@ -15,13 +15,18 @@ class CriarTabelaChecklists extends Migration
     {
         Schema::create('checklists', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('data');
-            $table->tinyInteger('estado')->index();
+            $table->tinyInteger('estado')->index()->default(0);
 
             $table->integer('incidente_id')->unsigned();
             $table->foreign('incidente_id')
                 ->references('id')
                 ->on('incidentes')
+                ->onDelete('cascade');
+
+            $table->integer('pessoa_id')->unsigned();
+            $table->foreign('pessoa_id')
+                ->references('id')
+                ->on('pessoas')
                 ->onDelete('cascade');
 
             $table->timestamps();

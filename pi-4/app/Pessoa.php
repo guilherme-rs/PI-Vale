@@ -20,4 +20,11 @@ class Pessoa extends Model
     public function visitante(){
         return $this->hasOne(Visitante::Class);
     }
+
+    public  function checklists(){
+        return $this->hasMany(Checklist::Class);
+    }
+    public function incidentes(){
+        return $this->hasMany(Incidente::Class);
+    }
 }

@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Checklist;
-use App\Incidente;
-use App\Pessoa;
+use App\Rotafuga;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\Controller;
 
-class ChecklistsController extends Controller
+class RotafugasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,7 @@ class ChecklistsController extends Controller
      */
     public function index()
     {
-        $checklists = Checklist::get();
-        return view('checklists.index', ['checklists' => $checklists]);
+        return Rotafuga::all();
     }
 
     /**
@@ -61,11 +58,7 @@ class ChecklistsController extends Controller
      */
     public function edit($id)
     {
-        $pessoas = Pessoa::get();
-        $checklist = Checklist::find($id);
-        return view('checklists.create', [
-            'id' => $checklist->id,
-            'pessoas' => $pessoas]);
+        //
     }
 
     /**
@@ -77,13 +70,7 @@ class ChecklistsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $checklist = new Checklist();
-        $id = Checklist::find($id)->incidente_id;
-        $checklist->incidente_id = $id;
-        $checklist->pessoa_id = Input::get('pessoa');
-        $checklist->save();
-
-        return redirect()->route('incidentes.show', ['id' => $checklist->incidente_id]);
+        //
     }
 
     /**

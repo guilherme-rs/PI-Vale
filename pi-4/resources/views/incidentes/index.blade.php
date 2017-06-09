@@ -13,7 +13,7 @@
         <th>Descrição</th>
         <th>Alerta abandono</th>
         <th>Data do incidente</th>
-        {{--<th>CheckList</th>--}}
+        <th>CheckList</th>
         <th>Editar</th>
         <th>Excluir</th>
         </thead>
@@ -24,6 +24,11 @@
                 <td>{{ $item -> descricao}}</td>
                 <td>{{ $item -> alertaAbandono}}</td>
                 <td>{{ $item -> data}}</td>
+                <td>
+                    <a href="{{route('incidentes.show', ['id' => $item->id])}}">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </a>
+                </td>
                 <td>
                     <a href="{{route('incidentes.edit', ['id' => $item->id])}}">
                         <span class="glyphicon glyphicon-pencil"></span>

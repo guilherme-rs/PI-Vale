@@ -30,7 +30,7 @@ class AddCamposTabelaPredios extends Migration
         Schema::table('predios', function (Blueprint $table) {
             $table->dropColumn('latitude');
             $table->dropColumn('longitude');
-            $table->dropColumn('distacia');
+            $table->dropColumn('distancia');
         });
     }
 }
