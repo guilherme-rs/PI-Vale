@@ -40,5 +40,9 @@ Route::group(['namespace' => 'Api'], function(){
     Route::put('funcionarios/{funcionario}', 'FuncionariosController@update');
     Route::delete('funcionarios/{funcionario}', 'FuncionariosController@destroy');
 
+    Route::get('salas', 'SalasController@index');
+
+    Route::get('rotasfugas', 'RotasfugasController@index');
+
     Route::get('soap', 'SoapController@show');
 });
