@@ -88,7 +88,7 @@ class PrediosController extends Controller
         $predio->nome = Input::get('nome');
         $predio->latitude = Input::get('latitude');
         $predio->longitude = Input::get('longitude');
-        $predio->distancia = Input::get('distancia');
+        $predio->distancia = 0;
         $predio->save();
 
         return redirect()->route('predios.index');
